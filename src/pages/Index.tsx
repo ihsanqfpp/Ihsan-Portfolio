@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/features/hero/HeroSection";
-import ChatBot from "@/components/layout/ChatBot";
 
 const AboutSection = lazy(() => import("@/features/about/AboutSection"));
 const TechStackSection = lazy(() => import("@/features/tech-stack/TechStackSection"));
@@ -25,7 +24,6 @@ const Index = () => (
     >
       Skip to main content
     </a>
-    <ChatBot />
     <Navbar />
     <main id="main-content">
       <HeroSection />

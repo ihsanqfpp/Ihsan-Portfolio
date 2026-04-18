@@ -144,7 +144,7 @@ const HeroSection = () => {
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    <Avatar className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 hover:scale-105 transition-transform duration-300">
+                    <Avatar className="w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 hover:scale-105 transition-transform duration-300">
                       <AvatarImage
                         src="/Image/Ihsan_img-Black.png"
                         alt="Ihsan Ullah - MERN Stack Developer"

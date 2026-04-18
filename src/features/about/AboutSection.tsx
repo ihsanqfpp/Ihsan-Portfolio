@@ -52,7 +52,7 @@ const AboutSection = () => {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full lg:w-2/5 sticky top-24"
+            className="w-full lg:w-2/5 lg:sticky lg:top-24"
           >
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/30 to-neon-purple/30 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

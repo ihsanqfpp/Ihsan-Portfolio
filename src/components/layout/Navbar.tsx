@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 
 const navLinks = [
+  { label: "Home", href: "/" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
@@ -24,6 +25,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
+      id="top"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -34,7 +36,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4">
-        <a href="#" className="text-xl font-heading font-bold gradient-text">
+        <a href="/" className="text-xl font-heading font-bold gradient-text" aria-label="Go to home">
           IU
         </a>
 

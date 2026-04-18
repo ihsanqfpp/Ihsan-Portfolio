@@ -23,7 +23,7 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    href: `mailto:${siteConfig.email}`,
+    href: `https://mail.google.com/mail/?view=cm&to=${siteConfig.email}`,
     color: "hover:text-[#EA4335]",
     label: "Send Email"
   },
@@ -53,8 +53,8 @@ const SocialIcons = memo(({ className = "" }: { className?: string }) => {
         <motion.a
           key={name}
           href={href}
-          target={name === "Email" ? undefined : "_blank"}
-          rel={name === "Email" ? undefined : "noopener noreferrer"}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={label}
           onClick={() => handleClick(name)}
           whileHover={{ scale: 1.1 }}

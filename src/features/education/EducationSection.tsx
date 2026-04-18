@@ -43,7 +43,7 @@ const EducationSection = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-3 gap-5"
+          className="grid sm:grid-cols-2 md:grid-cols-3 gap-5"
         >
           {education.map((edu, index) => {
             const Icon = icons[index] || BookOpen;

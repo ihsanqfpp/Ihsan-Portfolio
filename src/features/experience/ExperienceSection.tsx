@@ -43,7 +43,7 @@ const ExperienceSection = () => {
             >
 
               <div className="flex-1 mb-4 mt-2">
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between flex-wrap gap-2 mb-4">
                   <div className="inline-flex items-center gap-1.5 bg-neon-blue/5 px-2.5 py-1 rounded-lg text-[10px] font-bold text-neon-blue uppercase tracking-widest border border-neon-blue/10">
                     <Calendar size={12} />
                     {exp.period}

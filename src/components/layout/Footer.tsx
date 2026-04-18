@@ -20,7 +20,7 @@ const Footer = memo(() => (
           className="text-muted-foreground hover:text-foreground transition-colors">
           <Linkedin size={20} />
         </a>
-        <a href={`mailto:${siteConfig.email}`} aria-label="Email"
+        <a href={`https://mail.google.com/mail/?view=cm&to=${siteConfig.email}`} target="_blank" rel="noopener noreferrer" aria-label="Email"
           className="text-muted-foreground hover:text-foreground transition-colors">
           <Mail size={20} />
         </a>

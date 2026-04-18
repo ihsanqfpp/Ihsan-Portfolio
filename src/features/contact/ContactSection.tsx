@@ -57,7 +57,13 @@ const ContactSection = () => {
     setStatus("sending");
 
     try {
-      await emailjs.send(
+      console.log("EmailJS Config:", { 
+        serviceId: EMAILJS_SERVICE_ID, 
+        templateId: EMAILJS_TEMPLATE_ID, 
+        publicKey: EMAILJS_PUBLIC_KEY ? "SET" : "MISSING" 
+      });
+
+      const result = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
@@ -67,6 +73,7 @@ const ContactSection = () => {
         },
         EMAILJS_PUBLIC_KEY
       );
+      console.log("EmailJS result:", result);
 
       setStatus("success");
       reset();

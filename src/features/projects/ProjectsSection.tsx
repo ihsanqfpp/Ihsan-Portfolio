@@ -2,7 +2,6 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useMemo, useCallback } from "react";
 import { ExternalLink, Github, TrendingUp, Search } from "lucide-react";
 import { projects, Project } from "@/data/projects";
-import { Button } from "@/components/ui/button";
 import ProjectCaseStudyModal from "./ProjectCaseStudyModal";
 import ImageWithFallback from "@/components/ui/ImageWithFallback";
 
@@ -25,17 +24,10 @@ const ProjectsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [filter, setFilter] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [showAll, setShowAll] = useState(false);
-
   const filtered = useMemo(
-    () => {
-      setShowAll(false);
-      return filter === "all" ? projects : projects.filter((p) => p.category === filter);
-    },
+    () => filter === "all" ? projects : projects.filter((p) => p.category === filter),
     [filter]
   );
-
-  const displayedProjects = showAll ? filtered : filtered.slice(0, 3);
 
   const closeModal = useCallback(() => setSelectedProject(null), []);
 
@@ -107,7 +99,7 @@ const ProjectsSection = () => {
             animate={isInView ? "visible" : "hidden"}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
           >
-            {displayedProjects.map((project) => (
+            {filtered.map((project) => (
               <motion.div
                 key={project.title}
                 variants={cardVariants}
@@ -115,7 +107,7 @@ const ProjectsSection = () => {
                 whileHover={{ y: -8 }}
                 className="glass rounded-xl overflow-hidden group flex flex-col"
               >
-                <div className="h-40">
+                <div className="relative h-36 sm:h-40">
                   <ImageWithFallback
                     src={project.image}
                     alt={project.title}
@@ -166,22 +158,6 @@ const ProjectsSection = () => {
               </motion.div>
             ))}
           </motion.div>
-
-          {!showAll && filtered.length > 3 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 }}
-              className="flex justify-center mt-10"
-            >
-              <Button
-                onClick={() => setShowAll(true)}
-                className="bg-gradient-to-r from-neon-blue to-neon-purple text-primary-foreground neon-glow px-8 py-3 text-sm font-medium"
-              >
-                Explore All Projects
-              </Button>
-            </motion.div>
-          )}
           </>
         )}
       </div>
