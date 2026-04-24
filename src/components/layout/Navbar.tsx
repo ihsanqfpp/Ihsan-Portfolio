@@ -52,8 +52,8 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="/Ihsan-CV.pdf"
-            download
+            href="/MY_CV__1_.pdf"
+            download="MY_CV__1_"
             className="px-4 py-2 rounded-lg glass text-foreground text-sm font-medium hover:bg-card/50 transition-all flex items-center gap-2 border border-neon-blue/20 hover:border-neon-blue/50"
             aria-label="Download resume"
           >
@@ -93,8 +93,8 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="/Ihsan-CV.pdf"
-                download
+                href="/MY_CV__1_.pdf"
+                download="MY_CV__1_"
                 onClick={closeMobile}
                 className="px-4 py-2 rounded-lg glass text-foreground text-sm font-medium text-center flex items-center justify-center gap-2 border border-neon-blue/20"
               >

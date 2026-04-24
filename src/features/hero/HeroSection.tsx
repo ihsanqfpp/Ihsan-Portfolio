@@ -110,13 +110,7 @@ const HeroSection = () => {
                 View Projects
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a
-                href="/Ihsan-CV.pdf"
-                download
-                className="px-8 py-3 rounded-xl glass border border-neon-blue/30 text-neon-blue font-medium hover:bg-neon-blue/10 hover:border-neon-blue hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all duration-200 text-center"
-              >
-                Resume
-              </a>
+
             </motion.div>
 
             <motion.div
