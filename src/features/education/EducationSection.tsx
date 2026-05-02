@@ -1,19 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Award, BookOpen, School } from "lucide-react";
+import { GraduationCap, Award, School, Star } from "lucide-react";
 import { education } from "@/data/education";
-
-const icons = [GraduationCap, School, School];
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } },
-};
 
 const EducationSection = () => {
   const ref = useRef(null);
@@ -21,66 +9,63 @@ const EducationSection = () => {
 
   return (
     <section id="education" className="section-padding relative overflow-hidden" ref={ref}>
-      <div className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-purple/5 blur-[100px]" />
+      <div className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/5 blur-[100px]" />
 
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mb-10"
         >
-          <p className="text-neon-purple text-sm font-medium tracking-widest uppercase mb-2">Education</p>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Academic <span className="gradient-text">Background</span>
+          <div className="flex items-center gap-2 text-emerald-400 font-bold tracking-[0.2em] uppercase text-xs mb-4">
+            <GraduationCap size={14} />
+            <span>Academic Background</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 tracking-tight">
+            Education <span className="gradient-text">& Foundation.</span>
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            A strong foundation in software engineering, built through rigorous academics and hands-on projects.
-          </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid sm:grid-cols-2 md:grid-cols-3 gap-5"
-        >
-          {education.map((edu, index) => {
-            const Icon = icons[index] || BookOpen;
-            return (
-              <motion.div
-                key={edu.id}
-                variants={cardVariants}
-                whileHover={{ y: -8 }}
-                className="glass-strong rounded-xl p-5 relative flex flex-col h-full group"
-              >
-                <div className="w-11 h-11 rounded-lg bg-neon-purple/10 flex items-center justify-center mb-4 group-hover:bg-neon-purple/20 transition-colors">
-                  <Icon className="h-5 w-5 text-neon-purple" />
+        <div className="grid md:grid-cols-3 gap-6">
+          {education.map((edu, idx) => (
+            <motion.div
+              key={edu.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="premium-card group !p-6 flex flex-col h-full"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all duration-500 mb-6">
+                <School size={24} />
+              </div>
+              
+              <div className="flex-1 flex flex-col">
+                <div className="mb-4">
+                  <h3 className="text-lg font-heading font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">{edu.degree}</h3>
+                  <p className="text-slate-400 text-xs font-medium mt-1">{edu.institution}</p>
                 </div>
-
-                <h3 className="font-heading font-semibold text-lg mb-1 group-hover:text-neon-purple transition-colors">
-                  {edu.degree}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-3">{edu.institution}</p>
-
-                <div className="mt-auto space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-1 rounded-md bg-neon-blue/10 text-neon-blue text-xs font-medium">
-                      {edu.grade}
-                    </span>
+                
+                <div className="mt-auto space-y-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{edu.period}</span>
+                    <div className="flex items-center gap-1 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+                      <Star size={10} />
+                      <span>{edu.grade}</span>
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground">{edu.period}</p>
+                  
                   {edu.highlight && (
-                    <div className="flex items-center gap-1.5 mt-2">
-                      <Award className="h-4 w-4 text-neon-purple/70" />
-                      <span className="text-xs text-neon-purple/80 font-medium">{edu.highlight}</span>
+                    <div className="pt-4 border-t border-white/5 flex items-center gap-2 text-blue-400">
+                      <Award size={14} />
+                      <span className="text-[9px] font-bold uppercase tracking-wider">{edu.highlight}</span>
                     </div>
                   )}
                 </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -8,5 +8,6 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/ihsanullah307",
     github: "https://github.com/ihsanqfpp",
     whatsapp: "https://wa.me/923379692307",
+    cv: "/IhsanU_CV.pdf",
   },
 } as const;

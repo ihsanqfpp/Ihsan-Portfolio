@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { toast } from "sonner";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/data/site-config";
 
@@ -17,13 +16,13 @@ const socialLinks = [
     name: "GitHub",
     icon: Github,
     href: siteConfig.socials.github,
-    color: "hover:text-[#171515]",
+    color: "hover:text-[#ffffff]",
     label: "GitHub Profile"
   },
   {
     name: "Email",
     icon: Mail,
-    href: `https://mail.google.com/mail/?view=cm&to=${siteConfig.email}`,
+    href: `mailto:${siteConfig.email}`,
     color: "hover:text-[#EA4335]",
     label: "Send Email"
   },
@@ -37,16 +36,6 @@ const socialLinks = [
 ];
 
 const SocialIcons = memo(({ className = "" }: { className?: string }) => {
-  const handleClick = (name: string) => {
-    toast.success(`Opening ${name}...`, {
-      style: {
-        background: "rgba(0, 0, 0, 0.8)",
-        color: "#fff",
-        borderColor: "rgba(0, 240, 255, 0.2)",
-      },
-    });
-  };
-
   return (
     <div className={`flex gap-4 ${className}`}>
       {socialLinks.map(({ name, icon: Icon, href, color, label }) => (
@@ -56,12 +45,11 @@ const SocialIcons = memo(({ className = "" }: { className?: string }) => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          onClick={() => handleClick(name)}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ y: -4, scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className={`w-12 h-12 rounded-xl glass flex items-center justify-center text-muted-foreground transition-all duration-300 border border-white/5 hover:border-neon-blue/20 cursor-pointer ${color}`}
+          className={`w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/10 ${color}`}
         >
-          <Icon size={22} />
+          <Icon size={20} />
         </motion.a>
       ))}
     </div>

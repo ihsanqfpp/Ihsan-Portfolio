@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        heading: ["Poppins", "sans-serif"],
+        heading: ["Outfit", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,19 +51,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "neon-blue": "hsl(var(--neon-blue))",
-        "neon-purple": "hsl(var(--neon-purple))",
-        "glass-border": "hsl(var(--glass-border))",
-        "hero-bg": "hsl(var(--hero-bg))",
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        "saas-emerald": "#10b981",
+        "saas-slate": {
+          950: "#020617",
+          900: "#0f172a",
+          800: "#1e293b",
         },
       },
       borderRadius: {
@@ -88,15 +80,25 @@ export default {
           "0%, 100%": { opacity: "0.4" },
           "50%": { opacity: "0.8" },
         },
+        "mesh-move": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         float: "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        "mesh-move": "mesh-move 15s ease infinite",
       },
+      backgroundImage: {
+        "premium-gradient": "linear-gradient(135deg, #10b981 0%, #3b82f6 100%)",
+        "dark-gradient": "linear-gradient(180deg, #020617 0%, #0f172a 100%)",
+      }
     },
   },
-// eslint-disable-next-line @typescript-eslint/no-require-imports
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

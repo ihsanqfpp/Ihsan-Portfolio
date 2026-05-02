@@ -1,18 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useMemo } from "react";
 import { techStack } from "@/data/skills";
+import { Cpu } from "lucide-react";
 
-const filters = ["all", "frontend", "backend", "tools"] as const;
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.04 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-};
+const filters = ["all", "frontend", "backend", "tools", "learning"] as const;
 
 const TechStackSection = () => {
   const ref = useRef(null);
@@ -25,67 +16,64 @@ const TechStackSection = () => {
   );
 
   return (
-    <section id="tech" className="section-padding" ref={ref}>
-      <div className="container mx-auto max-w-6xl">
+    <section id="tech" className="section-padding bg-slate-950/30" ref={ref}>
+      <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mb-20"
         >
-          <p className="text-neon-blue text-sm font-medium tracking-widest uppercase mb-2">Skills</p>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold">
-            My <span className="gradient-text">Tech Stack</span>
+          <div className="flex items-center gap-2 text-emerald-400 font-bold tracking-[0.2em] uppercase text-xs mb-4">
+            <Cpu size={14} />
+            <span>Tech Stack</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-heading font-bold mb-6 tracking-tight">
+            Tools of the <span className="gradient-text">Trade.</span>
           </h2>
+          <p className="text-slate-400 text-lg md:text-xl leading-relaxed">
+            I specialize in the MERN stack but I'm always expanding my horizon with modern tools and performance-oriented technologies.
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="flex justify-center gap-2 mb-10 flex-wrap"
-        >
+        {/* Filter Chips */}
+        <div className="flex flex-wrap gap-3 mb-16">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-5 py-2 rounded-lg text-sm font-medium capitalize transition-all duration-200 ${
+              className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 border ${
                 filter === f
-                  ? "bg-gradient-to-r from-neon-blue to-neon-purple text-primary-foreground neon-glow"
-                  : "glass text-muted-foreground hover:text-foreground"
+                  ? "bg-white text-slate-950 border-white"
+                  : "bg-transparent border-white/10 text-slate-500 hover:border-emerald-500/50 hover:text-emerald-400"
               }`}
             >
               {f}
             </button>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-        >
-          {filtered.map((tech) => {
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          {filtered.map((tech, i) => {
             const Icon = tech.icon;
             return (
               <motion.div
                 key={tech.name}
-                variants={itemVariants}
-                layout
-                whileHover={{ scale: 1.05, y: -4 }}
-                className="glass rounded-xl p-3 text-center group cursor-default neon-glow-hover transition-shadow duration-300 flex flex-col items-center gap-2"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col items-center justify-center gap-3 group hover:bg-white/10 hover:border-white/10 transition-all duration-300"
               >
                 <div className={`text-xl group-hover:scale-110 transition-transform duration-300 ${tech.colorClass}`}>
                   <Icon />
                 </div>
-                <p className="text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors leading-tight">
+                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest group-hover:text-slate-200 transition-colors">
                   {tech.name}
-                </p>
+                </span>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

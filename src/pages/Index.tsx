@@ -12,15 +12,15 @@ const Footer = lazy(() => import("@/components/layout/Footer"));
 
 const SectionFallback = () => (
   <div className="section-padding flex items-center justify-center">
-    <div className="w-8 h-8 border-2 border-neon-blue/30 border-t-neon-blue rounded-full animate-spin" />
+    <div className="w-8 h-8 border-2 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin" />
   </div>
 );
 
 const Index = () => (
-  <div className="min-h-screen bg-background text-foreground selection:bg-neon-blue/20">
+  <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-emerald-500/30">
     <a
       href="#main-content"
-      className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-neon-blue focus:text-primary-foreground focus:outline-none"
+      className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-6 focus:py-3 focus:rounded-full focus:bg-emerald-500 focus:text-slate-950 focus:font-bold focus:outline-none transition-all"
     >
       Skip to main content
     </a>

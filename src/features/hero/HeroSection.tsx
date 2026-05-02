@@ -1,157 +1,134 @@
-import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download, Mail } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import SocialIcons from "@/components/layout/SocialIcons";
-
-const roles = [
-  "MERN Stack Developer",
-  "React & Node.js Engineer",
-  "BS Software Engineering",
-  "Open to Opportunities",
-];
+import { siteConfig } from "@/data/site-config";
 
 const HeroSection = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = roles[roleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!deleting && text.length < current.length) {
-      timeout = setTimeout(() => setText(current.slice(0, text.length + 1)), 50);
-    } else if (!deleting && text.length === current.length) {
-      timeout = setTimeout(() => setDeleting(true), 2500);
-    } else if (deleting && text.length > 0) {
-      timeout = setTimeout(() => setText(text.slice(0, -1)), 25);
-    } else if (deleting && text.length === 0) {
-      setDeleting(false);
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [text, deleting, roleIndex]);
-
-  // Current full role for screen readers
-  const currentRole = roles[roleIndex];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-hero-bg" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#3B82F61a_1px,transparent_1px),linear-gradient(to_bottom,#3B82F61a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#3B82F6]/10 rounded-full blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#22C55E]/8 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3B82F6]/5 rounded-full blur-3xl" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" aria-label="Hero">
+      {/* Mesh Gradient Background */}
+      <div className="absolute inset-0 bg-slate-950" />
+      <div className="absolute inset-0 mesh-gradient opacity-40 animate-mesh-move" />
+      
+      {/* Decorative Blur Blobs */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-500/10 blur-[120px]" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-[120px]" />
 
-      <div className="relative z-10 container mx-auto max-w-6xl px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div className="relative z-10 container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           {/* Left Side - Content */}
-          <div className="flex-1 text-center lg:text-left">
-            {/* Availability badge */}
+          <div className="flex-1 text-center lg:text-left max-w-2xl">
+            {/* Status Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-medium text-muted-foreground mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-xs font-medium mb-8"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              Available for new opportunities
+              Open to Remote Full Stack Roles
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-[1.1] tracking-tight"
             >
-              I build{" "}
-              <span className="gradient-text">fast, scalable & secure</span>{" "}
-              web applications
+              MERN Stack <br />
+              <span className="gradient-text">Developer</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-muted-foreground text-base md:text-lg mb-2 max-w-xl mx-auto lg:mx-0"
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0"
             >
-              Software Engineer with 3 internships &amp; 7+ projects — turning ideas into scalable products
+              I build scalable, performant full-stack applications with clean UI systems and production-grade backend architecture.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="h-8 md:h-10 flex items-center justify-center lg:justify-start mb-8"
-            >
-              <span className="text-base md:text-xl text-neon-blue font-medium" aria-hidden="true">
-                {text}
-                <span className="inline-block w-0.5 h-5 bg-neon-blue ml-1 animate-pulse" />
-              </span>
-              <span className="sr-only">{currentRole}</span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
+              className="flex flex-wrap gap-4 justify-center lg:justify-start items-center mb-10"
             >
               <a
                 href="#projects"
-                className="group px-8 py-3 rounded-xl bg-gradient-to-r from-neon-blue to-neon-purple text-primary-foreground font-medium hover:opacity-90 transition-all duration-200 neon-glow-hover flex items-center justify-center gap-2"
+                className="px-8 py-4 rounded-full bg-emerald-500 text-slate-950 font-semibold hover:bg-emerald-400 transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)]"
               >
                 View Projects
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={18} />
               </a>
-
+              <a
+                href="#contact"
+                className="px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white font-semibold hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+              >
+                Contact Me
+                <Mail size={18} />
+              </a>
+              <a
+                href={siteConfig.socials.cv}
+                download="IhsanU_CV.pdf"
+                className="px-8 py-4 rounded-full text-slate-400 hover:text-white transition-all duration-300 flex items-center gap-2"
+              >
+                <Download size={18} />
+                Download CV
+              </a>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              className="flex justify-center lg:justify-start"
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
               <SocialIcons />
             </motion.div>
           </div>
 
-          {/* Right Side - Profile Image */}
+          {/* Right Side - Image/Visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.3, type: "spring", stiffness: 100 }}
-            className="flex-shrink-0"
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="relative lg:w-[450px] lg:h-[450px]"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/30 to-neon-purple/30 rounded-full blur-2xl scale-110" />
-              <div className="relative glass rounded-full p-2">
-                <div className="rounded-full p-1 bg-gradient-to-r from-neon-blue to-neon-purple">
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <Avatar className="w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 hover:scale-105 transition-transform duration-300">
-                      <AvatarImage
-                        src="/Image/Ihsan_img-Black.png"
-                        alt="Ihsan Ullah - MERN Stack Developer"
-                        className="object-cover object-[center_20%]"
-                      />
-                      <AvatarFallback className="text-6xl font-heading font-bold bg-gradient-to-r from-neon-blue to-neon-purple text-primary-foreground">
-                        IU
-                      </AvatarFallback>
-                    </Avatar>
-                  </motion.div>
-                </div>
-              </div>
+            {/* Visual background elements */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-blue-500/20 rounded-full rotate-6 scale-95 blur-2xl" />
+            
+            <div className="relative z-10 w-full h-full glass-card rounded-full p-4 flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent" />
+              <Avatar className="w-full h-full rounded-full border border-white/10">
+                <AvatarImage
+                  src="/Image/Ihsan_img-Black.png"
+                  alt="Ihsan Ullah"
+                  className="object-cover object-top hover:scale-105 transition-transform duration-500"
+                />
+                <AvatarFallback className="text-8xl font-heading font-bold bg-slate-900 text-emerald-500">
+                  IU
+                </AvatarFallback>
+              </Avatar>
             </div>
+
+            {/* Floating Achievement Card (SaaS signal) */}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-6 -right-6 md:-right-10 glass p-4 rounded-2xl border border-white/10 shadow-2xl max-w-[180px]"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <span className="text-sm font-bold">3+</span>
+                </div>
+                <span className="text-xs font-semibold text-slate-200 uppercase tracking-wider">Internships</span>
+              </div>
+              <p className="text-[10px] text-slate-400">Real-world experience at top tech firms.</p>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -160,19 +137,13 @@ const HeroSection = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        transition={{ delay: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block"
       >
-        <a href="#about" aria-label="Scroll to about section" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-5 h-8 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-1.5"
-          >
-            <div className="w-1 h-1.5 rounded-full bg-neon-blue" />
-          </motion.div>
-        </a>
+        <div className="flex flex-col items-center gap-3">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold">Scroll to Explore</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-emerald-500 to-transparent" />
+        </div>
       </motion.div>
     </section>
   );
