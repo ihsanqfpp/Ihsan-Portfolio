@@ -115,20 +115,7 @@ const HeroSection = () => {
               </Avatar>
             </div>
 
-            {/* Floating Achievement Card (SaaS signal) */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-6 md:-right-10 glass p-4 rounded-2xl border border-white/10 shadow-2xl max-w-[180px]"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-                  <span className="text-sm font-bold">3+</span>
-                </div>
-                <span className="text-xs font-semibold text-slate-200 uppercase tracking-wider">Internships</span>
-              </div>
-              <p className="text-[10px] text-slate-400">Real-world experience at top tech firms.</p>
-            </motion.div>
+
           </motion.div>
         </div>
       </div>

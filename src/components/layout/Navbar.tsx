@@ -36,8 +36,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        <a href="/" className="text-2xl font-heading font-bold gradient-text tracking-tighter" aria-label="Home">
-          Ihsan.
+        <a href="/" aria-label="Home" className="rounded-xl overflow-hidden bg-[#0a0f1e] p-1 border border-white/10">
+          <img src="/Image/ihsan-logo.png" alt="Ihsan Logo" className="h-16 w-auto object-contain" />
         </a>
 
         {/* Desktop Nav */}
@@ -46,9 +46,10 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-bold text-slate-400 hover:text-emerald-400 transition-colors duration-300 uppercase tracking-widest"
+              className="relative text-sm font-bold text-slate-400 hover:text-emerald-400 transition-colors duration-300 uppercase tracking-widest group"
             >
               {link.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
           <a
