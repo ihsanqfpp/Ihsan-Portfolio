@@ -87,47 +87,47 @@ export const projects: Project[] = [
     }
   },
   {
-    title: "YouTube Clone",
-    description: "A high-performance YouTube UI clone featuring video thumbnails, category filters, and search functionality.",
-    image: "https://images.unsplash.com/photo-1521302200778-33500795e128?auto=format&q=80&w=800&fit=crop",
-    tech: ["React", "CSS", "YouTube API"],
-    live: "https://youtube-clone-seven-roan.vercel.app",
-    github: "https://github.com/ihsanqfpp/youtube-clone.git",
+    title: "HRMS Frontend",
+    description: "A comprehensive Human Resource Management System frontend interface for managing employee data and organizational workflows.",
+    image: "/Image/HRMS.png",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    live: "https://hrms-frontend-one-plum.vercel.app",
+    github: "https://github.com/simpwae/HRMS_frontend.git",
     category: "frontend",
     role: "Frontend Developer",
-    impact: "Pixel-perfect YouTube UI",
+    impact: "Streamlined HR operations",
     caseStudy: {
-      problem: "Need for a complex, responsive layout that mimics production-grade media platforms.",
-      solution: "Built a complete YouTube UI clone with sidebar navigation and category filter chips.",
+      problem: "Organizations needed an intuitive interface to handle complex HR tasks seamlessly.",
+      solution: "Developed a responsive, feature-rich HRMS dashboard for better data management.",
       implementation: [
-        "Recreated YouTube's complex sidebar and grid layout.",
-        "Integrated YouTube Data API for real video content.",
-        "Implemented category-based filtering logic.",
-        "Optimized for mobile-first responsiveness."
+        "Built a modular component architecture.",
+        "Integrated complex forms and data validation.",
+        "Implemented secure routing and access control UI.",
+        "Optimized layout for both desktop and mobile users."
       ],
-      result: "Successfully replicated YouTube's modern UI with real-time data."
+      result: "Delivered a scalable frontend architecture that enhances user productivity."
     }
   },
   {
-    title: "Foodpanda Clone",
-    description: "A pixel-perfect UI clone of the Foodpanda platform, featuring city-based listings and restaurant sections.",
-    image: "https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&q=80&w=800&fit=crop",
-    tech: ["React", "Tailwind CSS", "JavaScript"],
-    live: "https://food-panda-clone-hazel.vercel.app",
-    github: "https://github.com/ihsanqfpp/FoodPanda-Clone.git",
+    title: "CDGAI Spin Wheel",
+    description: "An interactive, gamified spin-wheel application designed to boost user engagement and retention.",
+    image: "/Image/spin-wheel.png",
+    tech: ["React", "Tailwind CSS", "Framer Motion"],
+    live: "https://cdgai-spin-wheel.vercel.app",
+    github: "https://github.com/simpwae/cdgai_spinWheel.git",
     category: "frontend",
     role: "Frontend Developer",
-    impact: "Production-grade UI Clone",
+    impact: "Gamified user experience",
     caseStudy: {
-      problem: "Demonstrating advanced frontend layout skills through a popular production platform.",
-      solution: "Developed a pixel-perfect replica of the Foodpanda homepage and delivery flow.",
+      problem: "Client required a highly engaging, interactive component for marketing campaigns.",
+      solution: "Built a visually appealing spin wheel with smooth animations and dynamic rewards.",
       implementation: [
-        "Utilized Tailwind CSS for rapid, precise UI development.",
-        "Built responsive components for city listings and partner onboarding.",
-        "Implemented complex hover states and transitions.",
-        "Ensured accessibility across all interactive elements."
+        "Developed custom physics-based animations.",
+        "Integrated dynamic reward configuration.",
+        "Ensured responsive design across all devices.",
+        "Optimized animation performance for mobile browsers."
       ],
-      result: "Created a highly accurate representation of a major food delivery platform."
+      result: "Created a reusable, highly engaging marketing tool that increased conversion rates."
     }
   },
   {
